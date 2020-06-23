@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 6673635122140144745}
   - component: {fileID: 6673635122140144747}
   m_Layer: 9
-  m_Name: FirstPersonPlayer
+  m_Name: BunnyHopper
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,12 +350,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68059830d0e5a134d891a6a5392cc501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 16
+  dashSpeedMultiplier: 8
+  dashLength: 0.15
+  dashCooldown: 0.75
   jumpModeToggle: 0
   gravity: -39.24
   fallGravityMultiplyer: 1
   jumpHeight: 3
-  bunnyhopSpeedIncrementAmt: 12
+  bunnyhopSpeedIncrementAmt: 8
   groundCheck: {fileID: 6673635121556027114}
   groundDistance: 0.1
   groundMask:

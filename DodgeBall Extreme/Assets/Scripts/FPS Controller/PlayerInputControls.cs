@@ -49,6 +49,14 @@ public class @PlayerInputControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""HitBall"",
+                    ""type"": ""Button"",
+                    ""id"": ""9728d3dd-8685-4c01-bbd0-44f454e5cfb2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -216,6 +224,17 @@ public class @PlayerInputControls : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""507c5c1f-7a40-425c-9e43-fb81d9bef394"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KBM"",
+                    ""action"": ""HitBall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -256,6 +275,7 @@ public class @PlayerInputControls : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_HitBall = m_Player.FindAction("HitBall", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -309,6 +329,7 @@ public class @PlayerInputControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_HitBall;
     public struct PlayerActions
     {
         private @PlayerInputControls m_Wrapper;
@@ -317,6 +338,7 @@ public class @PlayerInputControls : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @HitBall => m_Wrapper.m_Player_HitBall;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -338,6 +360,9 @@ public class @PlayerInputControls : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @HitBall.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitBall;
+                @HitBall.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitBall;
+                @HitBall.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHitBall;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -354,6 +379,9 @@ public class @PlayerInputControls : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @HitBall.started += instance.OnHitBall;
+                @HitBall.performed += instance.OnHitBall;
+                @HitBall.canceled += instance.OnHitBall;
             }
         }
     }
@@ -382,5 +410,6 @@ public class @PlayerInputControls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnHitBall(InputAction.CallbackContext context);
     }
 }

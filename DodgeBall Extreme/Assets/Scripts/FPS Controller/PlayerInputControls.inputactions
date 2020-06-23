@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "HitBall",
+                    "type": "Button",
+                    "id": "9728d3dd-8685-4c01-bbd0-44f454e5cfb2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -201,6 +209,17 @@
                     "processors": "",
                     "groups": "KBM",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "507c5c1f-7a40-425c-9e43-fb81d9bef394",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "HitBall",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
