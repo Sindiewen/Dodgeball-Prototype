@@ -226,8 +226,7 @@ GameObject:
   - component: {fileID: 274153797}
   - component: {fileID: 274153796}
   - component: {fileID: 274153800}
-  - component: {fileID: 274153801}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +240,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274153795}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f05b0d10946015e4eaa5b5b73673df4e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -324,18 +323,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &274153801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274153795}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef45d1c56f34438449c1c7fb088af485, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1151639588 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6673635121791401668, guid: 547fe2e3fd2458147900e80602b02440,
@@ -356,7 +343,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballHitStrengthForward: 500
   ballHitStrengthUp: 250
-  maxDistance: 2
+  hitStr: {x: 0, y: 250, z: 500}
+  maxDistance: 4
   col: {fileID: 1151639593}
 --- !u!65 &1151639593
 BoxCollider:
@@ -482,6 +470,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6673635122140144724, guid: 547fe2e3fd2458147900e80602b02440,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6673635122140144745, guid: 547fe2e3fd2458147900e80602b02440,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
@@ -590,7 +583,7 @@ PrefabInstance:
     - target: {fileID: 6673635122140144746, guid: 547fe2e3fd2458147900e80602b02440,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.008988236
       objectReference: {fileID: 0}
     - target: {fileID: 6673635122140144746, guid: 547fe2e3fd2458147900e80602b02440,
         type: 3}
@@ -600,7 +593,7 @@ PrefabInstance:
     - target: {fileID: 6673635122140144746, guid: 547fe2e3fd2458147900e80602b02440,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99995965
       objectReference: {fileID: 0}
     - target: {fileID: 6673635122140144746, guid: 547fe2e3fd2458147900e80602b02440,
         type: 3}
@@ -615,12 +608,17 @@ PrefabInstance:
     - target: {fileID: 6673635122140144746, guid: 547fe2e3fd2458147900e80602b02440,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -1.03
       objectReference: {fileID: 0}
     - target: {fileID: 6673635122140144746, guid: 547fe2e3fd2458147900e80602b02440,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6673635122140144747, guid: 547fe2e3fd2458147900e80602b02440,
+        type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 3584
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 547fe2e3fd2458147900e80602b02440, type: 3}

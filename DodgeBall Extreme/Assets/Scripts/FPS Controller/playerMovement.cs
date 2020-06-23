@@ -61,19 +61,19 @@ public class playerMovement : MonoBehaviour
     public void movementVectorInpuPassthrough(InputAction.CallbackContext context)
     {
         movement = context.ReadValue<Vector2>(); 
-        Debug.Log("Movement value: " + movement.ToString());
+        //Debug.Log("Movement value: " + movement.ToString());
     }
 
     public void jumpInputPassthrough(InputAction.CallbackContext context)
     {
         jump = context.ReadValue<float>();
-        Debug.Log("Jump: " + jump.ToString());
+        //Debug.Log("Jump: " + jump.ToString());
     }
     
     public void dashInputPassthrough(InputAction.CallbackContext context)
     {
         inputDash = context.ReadValue<float>();
-        Debug.Log("Dashing Input: " + inputDash.ToString());
+        //Debug.Log("Dashing Input: " + inputDash.ToString());
     }
     #endregion
 

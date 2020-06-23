@@ -4,6 +4,7 @@ public class BallHitter : MonoBehaviour
 {
     public int ballHitStrengthForward = 500;
     public int ballHitStrengthUp = 250;
+    public Vector3 hitStr;
     public float maxDistance;
 
     public BoxCollider col;
@@ -18,27 +19,14 @@ public class BallHitter : MonoBehaviour
 
     public void ballHitInputPassthrough()
     {
-
-        // TODO: Look into determining hit direction by creating a ring around the ball and determine the force direction based on the position of the player to hit the ball
-        // when the player hits the ball, and activates thefunvtion to hit the ball in the ball class itself.
+        hit = Physics.BoxCast(col.bounds.center, col.size, transform.forward, out raycastHit, transform.parent.rotation, maxDistance);
         if (hit)
         {
             Debug.Log("Player " + transform.name + " Hit object " + raycastHit.collider.name);
             Rigidbody sphereRB = raycastHit.transform.GetComponent<Rigidbody>();
-            sphereRB.AddRelativeForce(new Vector3(0, ballHitStrengthUp, ballHitStrengthForward));
+            sphereRB.AddForce(new Vector3(transform.forward.x * ballHitStrengthForward, ballHitStrengthUp, transform.forward.z * ballHitStrengthForward));
         }
     }
-
-    private void Update()
-    {
-        hit = Physics.BoxCast(col.bounds.center, col.size, transform.forward, out raycastHit, transform.parent.rotation, maxDistance);
-        if(hit)
-        {
-            raycastHit.transform.eulerAngles = new Vector3(raycastHit.transform.rotation.eulerAngles.x, transform.parent.eulerAngles.y, raycastHit.transform.eulerAngles.z);
-        }
-    }
-
-
 
     //Draw the BoxCast as a gizmo to show where it currently is testing. Click the Gizmos button to see this
     void OnDrawGizmos()
