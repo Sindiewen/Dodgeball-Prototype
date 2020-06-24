@@ -4,7 +4,6 @@ public class BallHitter : MonoBehaviour
 {
     public int ballHitStrengthForward = 500;
     public int ballHitStrengthUp = 250;
-    public Vector3 hitStr;
     public float maxDistance;
 
     public BoxCollider col;
