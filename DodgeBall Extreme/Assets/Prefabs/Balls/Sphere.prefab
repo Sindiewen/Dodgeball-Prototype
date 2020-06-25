@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6901844856228727307}
   - component: {fileID: 6901844856228727306}
   - component: {fileID: 6901844856228727302}
+  - component: {fileID: 3371312740096239790}
+  - component: {fileID: 1237134267}
   m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
@@ -60,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4b069489f1868ed4ca6a80b9dc67e46e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,3 +112,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3371312740096239790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901844856228727309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de8d4b5f7b5c6c40bfe806c2be0f039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTeam: 0
+--- !u!114 &1237134267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6901844856228727309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238601a87a738564c9efb1107ce8cadb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friendlyColor: {r: 0, g: 0, b: 0, a: 0}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  enemyColor: {r: 0, g: 0, b: 0, a: 0}

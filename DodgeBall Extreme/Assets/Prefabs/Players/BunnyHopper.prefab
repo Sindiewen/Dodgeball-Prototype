@@ -121,6 +121,8 @@ GameObject:
   - component: {fileID: 6673635121791401690}
   - component: {fileID: 6673635121791401669}
   - component: {fileID: 6673635121791401688}
+  - component: {fileID: 1151639593}
+  - component: {fileID: 1151639590}
   m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -208,6 +210,35 @@ MonoBehaviour:
   mouseSensitivityX: 8
   mouseSensitivityY: 8
   playerBody: {fileID: 6673635122140144746}
+--- !u!65 &1151639593
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673635121791401668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1151639590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673635121791401668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d80a699181051947aa65c3ac76d1a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballHitStrengthForward: 500
+  ballHitStrengthUp: 250
+  maxDistance: 4
+  col: {fileID: 1151639593}
 --- !u!1 &6673635122140144724
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +251,8 @@ GameObject:
   - component: {fileID: 6673635122140144725}
   - component: {fileID: 6673635122140144745}
   - component: {fileID: 6673635122140144747}
+  - component: {fileID: 5986678354683367849}
+  - component: {fileID: 93574705055860588}
   m_Layer: 9
   m_Name: BunnyHopper
   m_TagString: Player
@@ -333,6 +366,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 341b4e80-83bb-4952-b33a-ea20cae1e19c
     m_ActionName: Player/Move[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6673635122140144747}
+        m_MethodName: dashInputPassthrough
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5f727a98-44ac-4bcf-bbcb-79a820a1dceb
+    m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1151639590}
+        m_MethodName: ballHitInputPassthrough
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9728d3dd-8685-4c01-bbd0-44f454e5cfb2
+    m_ActionName: Player/HitBall[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -363,5 +426,34 @@ MonoBehaviour:
   groundDistance: 0.1
   groundMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3584
   jumpTime: 0.35
+--- !u!114 &5986678354683367849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673635122140144724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4de8d4b5f7b5c6c40bfe806c2be0f039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTeam: 0
+--- !u!114 &93574705055860588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673635122140144724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4310361a03a1b1448bd46e26fd59c1b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballCheckRadius: 5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 2048
