@@ -29,7 +29,17 @@ public class sphereSpawner : MonoBehaviour
 
     private void createBall()
     {
-        GameObject clone = Instantiate(ballsToSpawn, transform.position + spawnLocs[(int)Random.Range(0, spawnLocs.Count)], Quaternion.identity);
+        int spawnPos = (int)Random.Range(0, spawnLocs.Count);
+        GameObject clone = Instantiate(ballsToSpawn, transform.position + spawnLocs[spawnPos], Quaternion.identity);
+        sphereController sphere = clone.GetComponent<sphereController>();
+        if(spawnPos % 2 == 0)
+        {
+            sphere.setTeam("blu");
+        }
+        else
+        {
+            sphere.setTeam("red");
+        }
     }
 
 

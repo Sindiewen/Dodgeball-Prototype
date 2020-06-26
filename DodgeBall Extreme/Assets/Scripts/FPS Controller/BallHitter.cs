@@ -24,8 +24,19 @@ public class BallHitter : MonoBehaviour
             Debug.Log("Player " + transform.name + " Hit object " + raycastHit.collider.name);
             Rigidbody sphereRB = raycastHit.transform.GetComponent<Rigidbody>();
             sphereController sphere = raycastHit.transform.GetComponent<sphereController>();
-            sphereRB.AddForce(new Vector3(transform.forward.x * ballHitStrengthForward, ballHitStrengthUp, transform.forward.z * ballHitStrengthForward));
-            sphere.setColorNeutral();
+            sphereRB.velocity = Vector3.zero;
+            sphereRB.angularVelocity = Vector3.zero;
+            float yHitDir = 0;
+            if(transform.forward.y >= 0)
+            {
+                yHitDir = (transform.forward.y + 3) * ballHitStrengthUp;
+            }
+            else
+            {
+                yHitDir = (transform.forward.y * 2) * ballHitStrengthUp;
+            }
+
+            sphereRB.AddForce(new Vector3(transform.forward.x * ballHitStrengthForward, yHitDir, transform.forward.z * ballHitStrengthForward));
         }
     }
 
