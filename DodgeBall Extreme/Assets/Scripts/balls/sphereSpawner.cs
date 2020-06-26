@@ -23,11 +23,15 @@ public class sphereSpawner : MonoBehaviour
         if (currentSpawnedBalls < maxBallsInScene)
         {
             currentSpawnedBalls += 1;
-            Invoke("createBall", Random.Range(ballSpawnIntervalRange.x, ballSpawnIntervalRange.y));
+            Invoke("createBallRandomLoc", Random.Range(ballSpawnIntervalRange.x, ballSpawnIntervalRange.y));
         }
     }
 
-    private void createBall()
+    /// <Summary>
+    /// Spawn's ball at a random point of the spawn locations. When it spawns, the ball is given a team
+    /// based on which side the ball spawns on. Even = Blu, Odd = Red
+    /// </Summary>
+    private void createBallRandomLoc()
     {
         int spawnPos = (int)Random.Range(0, spawnLocs.Count);
         GameObject clone = Instantiate(ballsToSpawn, transform.position + spawnLocs[spawnPos], Quaternion.identity);

@@ -2,17 +2,20 @@
 
 public class BallHitter : MonoBehaviour
 {
+    // public Cube col;
     public int ballHitStrengthForward = 500;
     public int ballHitStrengthUp = 250;
     public float maxDistance;
 
     public BoxCollider col;
+    private PlayerGameControlelr pgc;
     private RaycastHit raycastHit;
     private bool hit;
 
     private void Start()
     {
         col = GetComponent<BoxCollider>();
+        pgc = GetComponentInParent<PlayerGameControlelr>();
     }
 
 
@@ -24,6 +27,8 @@ public class BallHitter : MonoBehaviour
             Debug.Log("Player " + transform.name + " Hit object " + raycastHit.collider.name);
             Rigidbody sphereRB = raycastHit.transform.GetComponent<Rigidbody>();
             sphereController sphere = raycastHit.transform.GetComponent<sphereController>();
+
+            // Calculate hit
             sphereRB.velocity = Vector3.zero;
             sphereRB.angularVelocity = Vector3.zero;
             float yHitDir = 0;
@@ -36,7 +41,34 @@ public class BallHitter : MonoBehaviour
                 yHitDir = (transform.forward.y * 2) * ballHitStrengthUp;
             }
 
+            // Add force to ball to hit it away
             sphereRB.AddForce(new Vector3(transform.forward.x * ballHitStrengthForward, yHitDir, transform.forward.z * ballHitStrengthForward));
+
+            // determine if friendly or enemy
+            if(pgc.getTeam.currentTeam == sphere.GetTeam.currentTeam)
+            {
+                // If friendly, heal 
+                if(pgc.HP < pgc.maxHP)
+                {
+                    pgc.HP += 1;
+                    Debug.Log("Punched friendly ball, healing by 1");
+                }
+                else
+                {
+                    // if enemy, take 1 hit and turn ball friendly
+                    pgc.HP -= 1;
+                    // todo: switching ball team doesnt seem to be working properly
+                    if(sphere.GetTeam.currentTeam == TeamManager.Team.BLU)
+                    {
+                        sphere.GetTeam.currentTeam = TeamManager.Team.RED;
+                    }
+                    else 
+                    {
+                        sphere.GetTeam.currentTeam = TeamManager.Team.BLU;
+                    }
+                    Debug.Log("Punched enemy ball, hit by 1, switched ball to friendly side");
+                }
+            }
         }
     }
 
