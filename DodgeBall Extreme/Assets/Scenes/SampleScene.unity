@@ -3315,6 +3315,10 @@ PrefabInstance:
       propertyPath: pgc
       value: 
       objectReference: {fileID: 2006810656}
+    - target: {fileID: 1151639590, guid: 547fe2e3fd2458147900e80602b02440, type: 3}
+      propertyPath: cooldown
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1151639593, guid: 547fe2e3fd2458147900e80602b02440, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3447,7 +3451,12 @@ PrefabInstance:
     - target: {fileID: 6673635122140144747, guid: 547fe2e3fd2458147900e80602b02440,
         type: 3}
       propertyPath: gravity
-      value: -19.62
+      value: -78.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6673635122140144747, guid: 547fe2e3fd2458147900e80602b02440,
+        type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 3072
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 547fe2e3fd2458147900e80602b02440, type: 3}

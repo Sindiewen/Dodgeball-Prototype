@@ -39,6 +39,10 @@ public class PlayerGameControlelr : MonoBehaviour
         // Checking if ball hits player
         checkBallHitPlayer();
 
+        if (healCooldownTimer > 0)
+        {
+            healCooldownTimer -= Time.deltaTime;
+        }
         if (HP <= 0)
         {
             playerDeath();
@@ -72,8 +76,9 @@ public class PlayerGameControlelr : MonoBehaviour
     private void checkBallHitPlayer()
     {
         hitsPlayer = Physics.OverlapCapsule(transform.position + hitPoint0, transform.position + hitPoint1, hitRadius, collisionMask);
-        if (hitsPlayer.Length > 0)
+        if (hitsPlayer.Length > 0 && healCooldownTimer <= 0)
         {
+            healCooldownTimer = healCooldown;
             for(int i = 0; i < hitsPlayer.Length; ++i)
             {
                 sphereController sphere = hitsPlayer[i].GetComponent<sphereController>();

@@ -6,6 +6,8 @@ public class BallHitter : MonoBehaviour
     public int ballHitStrengthForward = 500;
     public int ballHitStrengthUp = 250;
     public float maxDistance;
+    public float cooldown;
+    private float cooldownTimer;
 
     public BoxCollider col;
     private PlayerGameControlelr pgc;
@@ -18,12 +20,21 @@ public class BallHitter : MonoBehaviour
         pgc = GetComponentInParent<PlayerGameControlelr>();
     }
 
+    private void Update()
+    {
+        if (cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+        }
+    }
+
 
     public void ballHitInputPassthrough()
     {
         hit = Physics.BoxCast(col.bounds.center, col.size, transform.forward, out raycastHit, transform.parent.rotation, maxDistance);
-        if (hit)
+        if (hit && cooldownTimer <= 0)
         {
+            cooldownTimer = cooldown;
             Debug.Log("Player " + transform.name + " Hit object " + raycastHit.collider.name);
             Rigidbody sphereRB = raycastHit.transform.GetComponent<Rigidbody>();
             sphereController sphere = raycastHit.transform.GetComponent<sphereController>();
@@ -45,29 +56,28 @@ public class BallHitter : MonoBehaviour
             sphereRB.AddForce(new Vector3(transform.forward.x * ballHitStrengthForward, yHitDir, transform.forward.z * ballHitStrengthForward));
 
             // determine if friendly or enemy
-            if(pgc.getTeam.currentTeam == sphere.GetTeam.currentTeam)
+            if (pgc.getTeam.currentTeam == sphere.GetTeam.currentTeam)
             {
                 // If friendly, heal 
-                if(pgc.HP < pgc.maxHP)
+                if (pgc.HP < pgc.maxHP)
                 {
                     pgc.HP += 1;
                     Debug.Log("Punched friendly ball, healing by 1");
                 }
+            }
+            else
+            {
+                // if enemy, take 1 hit and turn ball friendly
+                pgc.HP -= 1;
+                if (sphere.GetTeam.currentTeam == TeamManager.Team.BLU)
+                {
+                    sphere.setTeam("red");
+                }
                 else
                 {
-                    // if enemy, take 1 hit and turn ball friendly
-                    pgc.HP -= 1;
-                    // todo: switching ball team doesnt seem to be working properly
-                    if(sphere.GetTeam.currentTeam == TeamManager.Team.BLU)
-                    {
-                        sphere.GetTeam.currentTeam = TeamManager.Team.RED;
-                    }
-                    else 
-                    {
-                        sphere.GetTeam.currentTeam = TeamManager.Team.BLU;
-                    }
-                    Debug.Log("Punched enemy ball, hit by 1, switched ball to friendly side");
+                    sphere.setTeam("blu");
                 }
+                Debug.Log("Punched enemy ball, hit by 1, switched ball to friendly side");
             }
         }
     }
