@@ -10,14 +10,14 @@ public class sphereController : MonoBehaviour
 
     private Material mat;
     private Renderer rend;
-    private TeamManager team;
+    private TeamObject team;
     private float switchToNeutralTimer = 0;
 
 
     private void Awake()
     {
         rend = GetComponent<Renderer>();
-        team = GetComponent<TeamManager>();
+        team = GetComponent<TeamObject>();
     }
 
     public void setColorFriendly()
@@ -41,11 +41,11 @@ public class sphereController : MonoBehaviour
     {
         if(color == "red")
         {
-            team.currentTeam = TeamManager.Team.RED;
+            team.currentTeam = TeamObject.Team.RED;
         }
         else if(color == "blu")
         {
-            team.currentTeam = TeamManager.Team.BLU;
+            team.currentTeam = TeamObject.Team.BLU;
         }
     }
 
@@ -66,7 +66,7 @@ public class sphereController : MonoBehaviour
 
 
     // Getters/setters
-    public TeamManager GetTeam
+    public TeamObject GetTeam
     {
         get { return team; }
     }

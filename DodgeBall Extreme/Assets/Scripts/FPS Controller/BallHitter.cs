@@ -69,7 +69,7 @@ public class BallHitter : MonoBehaviour
             {
                 // if enemy, take 1 hit and turn ball friendly
                 pgc.HP -= 1;
-                if (sphere.GetTeam.currentTeam == TeamManager.Team.BLU)
+                if (sphere.GetTeam.currentTeam == TeamObject.Team.BLU)
                 {
                     sphere.setTeam("red");
                 }

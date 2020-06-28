@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
-public class TeamManager: MonoBehaviour
+public class TeamObject: MonoBehaviour
 {
     public enum Team
     {
         RED,
-        BLU
+        BLU,
+        SPECTATOR,
+        CIVILIAN
     };
     
     public Team currentTeam;

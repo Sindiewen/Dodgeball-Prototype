@@ -24,11 +24,11 @@ public class PlayerGameControlelr : MonoBehaviour
     
     
     // Component references
-    private TeamManager team;
+    private TeamObject team;
     
     private void Start()
     {
-        team = GetComponent<TeamManager>();
+        team = GetComponent<TeamObject>();
     }
 
     private void Update()
@@ -119,7 +119,7 @@ public class PlayerGameControlelr : MonoBehaviour
     }
 
 
-    public TeamManager getTeam
+    public TeamObject getTeam
     {
         get { return team; }
     }
