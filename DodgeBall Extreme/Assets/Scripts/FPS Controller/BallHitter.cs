@@ -62,6 +62,7 @@ public class BallHitter : MonoBehaviour
                 if (pgc.HP < pgc.maxHP)
                 {
                     pgc.HP += 1;
+                    pgc.tmpHP.text = "HP: " + pgc.HP.ToString();
                     Debug.Log("Punched friendly ball, healing by 1");
                 }
             }
@@ -69,6 +70,7 @@ public class BallHitter : MonoBehaviour
             {
                 // if enemy, take 1 hit and turn ball friendly
                 pgc.HP -= 1;
+                pgc.tmpHP.text = "HP: " + pgc.HP.ToString();
                 if (sphere.GetTeam.currentTeam == TeamObject.Team.BLU)
                 {
                     sphere.setTeam("red");

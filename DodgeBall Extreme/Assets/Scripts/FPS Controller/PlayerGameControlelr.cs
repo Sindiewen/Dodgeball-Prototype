@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using TMPro;
 
 public class PlayerGameControlelr : MonoBehaviour
 {
@@ -19,6 +18,7 @@ public class PlayerGameControlelr : MonoBehaviour
     private bool hitPlayer;
     public int HP;
     public int maxHP;
+    public TextMeshProUGUI tmpHP;
     public float healCooldown;          // because ovelap sphere checks every frame, set it so that you heal after a set time, not every frame. also for taking damage
     private float healCooldownTimer;    // for cooldown above
     
@@ -29,6 +29,7 @@ public class PlayerGameControlelr : MonoBehaviour
     private void Start()
     {
         team = GetComponent<TeamObject>();
+        tmpHP.text = "HP: " + HP.ToString();
     }
 
     private void Update()
@@ -93,6 +94,7 @@ public class PlayerGameControlelr : MonoBehaviour
                     if(HP < maxHP)
                     {
                         HP += 1;
+                        tmpHP.text = "HP: " + HP.ToString();
                     }
                 }
             }
@@ -104,6 +106,7 @@ public class PlayerGameControlelr : MonoBehaviour
     {
         Debug.Log("Player has died");
         HP = 0;
+        tmpHP.text = "HP: Dead";
     }
 
     private void OnDrawGizmos()
